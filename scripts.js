@@ -5,7 +5,7 @@ console.log(Url);
 async function callApi() {
 await fetch(Url)
   .then(function(data) {
-    console.log(data);
+    console.log(data.json());
   })
   .catch(function (error) {
     console.error("There was a problem with the fetch operation:", error);
