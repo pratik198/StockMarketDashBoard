@@ -7,37 +7,59 @@ const daily = document.querySelector(".weight");
 const monthly = document.querySelector(".hight");
 let Url = null;
 if(intraday != null && intraday != undefined) {
-  Url = BaseUrl.replace("{0}","TIME_SERIES_INTRADAY").replace("{1}",sym).replace("{2}","1min");
+  Url = BaseUrl.replace("{0}","TIME_SERIES_INTRADAY").replace("{1}",sym).replace("{2}","60min");
 } else if(weekly != null && weekly != undefined) {
-    Url = BaseUrl.replace("{0}","TIME_SERIES_WEEKLY").replace("{1}",sym).replace("{2}","1min");
+    Url = BaseUrl.replace("{0}","TIME_SERIES_WEEKLY").replace("{1}",sym).replace("{2}","60min");
 } else if(daily != null && daily != undefined) {
-    Url = BaseUrl.replace("{0}","TIME_SERIES_DAILY").replace("{1}",sym).replace("{2}","1min");
+    Url = BaseUrl.replace("{0}","TIME_SERIES_DAILY").replace("{1}",sym).replace("{2}","60min");
 } else if(monthly != null && monthly != undefined) {
-    Url = BaseUrl.replace("{0}","TIME_SERIES_MONTHLY").replace("{1}",sym).replace("{2}","1min");
+    Url = BaseUrl.replace("{0}","TIME_SERIES_MONTHLY").replace("{1}",sym).replace("{2}","60min");
+} else {
+  Url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=60min&apikey=AO48IFCXLA3BX1O9";
 }
 console.log(Url);
 
-
+let stockData = null;
 function callApi() {
 fetch(Url)
   .then(function(data) {
-    const d = data.json();
+    stockData = data.json();
     console.log("anur");
-    console.log(d);
+    console.log(stockData);
     console.log("khaa");
-    stockData = data["Meta Data"];
-    console.log("2 "+stockData);
+    processStockData();
+    //stockData = data["Meta Data"];
+    //console.log("2 "+stockData);
   })
   .catch(function (error) {
     console.error("There was a problem with the fetch operation:", error);
   });
 }
-let stockData;
+
 callApi().then(function(result){
     stockData = result["Meta Data"];
-
     console.log("2 "+stockData);
-   
   })
 
   console.log("3 "+stockData);
+
+  async function processStockData() {
+  const stock60mindata = await stockData["Time Series (60min)"];
+  if(stock60mindata == null || stock60mindata == undefined) {
+    console.log("PROBLEM");
+  }
+  const entries = Object.entries(stock60mindata);
+  entries.forEach(Element => {
+    console.log(Element);
+  })
+  //stock60mindata.array.forEach(element => {
+  //  console.log(element);
+  //});
+  }
+
+  //processStockData().then(function(result){
+  //  console.log("anurag");
+  //})
+
+  
+
