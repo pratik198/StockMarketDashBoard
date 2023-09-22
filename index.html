@@ -1,77 +1,158 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 
 <html lang="en">
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Stock Market Dashboard</title>
+    <title>Stock Market Dashboard</title>
 
-<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 
-<link rel="stylesheet"
-
-href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 </head>
 
 <body>
 
-<div class="main">
+    <div class="main">
 
-<div id="header">
+        <div id="header">
 
-<header class="stockmarket-header">
+            <header class="stockmarket-header">
 
-Stock Market Dashboard
+                Stock Market Dashboard
 
-</header>
+            </header>
 
-</div>
+        </div>
 
-<div id="search-input">
+        <div id="search-input">
 
-<input type="text" id="symbolInput" placeholder="Search for symbol...">
+            <input type="text" id="symbolInput" placeholder="Search for symbol...">
 
-<span class="material-symbols-outlined">search</span>
+            <span class="material-symbols-outlined">search</span>
 
-<button type="button" class="btn">Intraday</button>
+            <button type="button" class="btn">Intraday</button>
 
-<button type="button" class="btn">Weekly</button>
+            <button type="button" class="btn">Weekly</button>
 
-<button type="button" class="btn">Daily</button>
+            <button type="button" class="btn">Daily</button>
 
-<button type="button" class="btn">Monthly</button>
+            <button type="button" class="btn">Monthly</button>
 
-</div>
+        </div>
 
-<div id="modal" class="modal">
+        <div id="modal" class="modal">
 
-<div class="modal-content">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <h2 id="modalTitle"></h2>
+                <div id="modalContent">
+                    <!-- Stock data will be displayed here -->
+                <!-- </div>
+            </div>
+        </div>
+    </div>
 
-<span class="close" id="closeModal">&times;</span>
-
-<h2 id="modalTitle"></h2>
-
-<div id="modalContent">
-
-<!-- Stock data will be displayed here -->
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<script src="scripts.js"></script>
+    <script src="scripts.js"></script>
 
 </body>
 
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h1 class="h-text">stock market dashboard</h1>
+        </div>
+        <div class="mid-box">
+            <div class="search-bar">
+                <input type="text" class="search-field" placeholder="Search for Symbol . . . ."></input>
+                <button class="search-button">🔍</button>
+            </div>
+            <div class="button-group">
+                <button>Intrady</button>
+                <button>Daily</button>
+                <button>Weekly</button>
+                <button>Monthly</button>
+            </div>
+        </div>
+        <div class="footer-box">
+            <div>
+
+                <div class="footer-heading">
+                    <p>YOUR WATCHLIST</p>
+                </div>
+                <div class="watch-list">
+                    <div class="list">
+                        <div class="sub-list">
+                            <p>AMZN</p>
+                        </div>
+                        <div class="sub-list">
+                            <div class="list-text">
+                                <p>123.45</p>
+                            </div>
+                        </div>
+                        <div class="sub-list">
+                            <button>Intrady</button>
+                        </div>
+                        <div class="sub-list">
+                            <p>❌</p>
+                        </div>
+                    </div>
+
+
+                    <div class="list">
+                        <div class="sub-list">
+                            <p>MFST</p>
+                        </div>
+                        <div class="sub-list">
+                            <div class="list-text1">
+                                <p>67.89</p>
+                            </div>
+                        </div>
+                        <div class="sub-list">
+                            <button>Intrady</button>
+                        </div>
+                        <div class="sub-list">
+                            <p>❌</p>
+                        </div>
+                    </div>
+
+
+                    <div class="list">
+                        <div class="sub-list">
+                            <p>IBM</p>
+                        </div>
+                        <div class="sub-list">
+                            <div class="list-text2">
+                                <p>56.34</p>
+                            </div>
+                        </div>
+                        <div class="sub-list">
+                            <button>Intrady</button>
+                        </div>
+                        <div class="sub-list">
+                            <p>❌</p>
+                        </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
 </html>
-
-
