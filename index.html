@@ -13,14 +13,14 @@
         </div>
         <div class="mid-box">
             <div class="search-bar">
-                <input type="text" class="search-field" placeholder="Search for Symbol . . . ."></input>
-                <button class="search-button" id="symbol">🔍</button>
+                <input type="text" id="symbol" class="search-field" placeholder="Search for Symbol . . . ."></input>
+                <button class="search-button" onclick="initialiseSymbol()">🔍</button>
             </div>
             <div class="button-group">
-                <button id="intraday">Intrday</button>
-                <button id="daily">Daily</button>
-                <button id="weekly">Weekly</button>
-                <button id= "monthly">Monthly</button>
+                <button id="intraday" onclick="initialiseFunctionAsIntraday()">Intraday</button>
+                <button id="daily" onclick="initialiseFunctionAsDaily()">Daily</button>
+                <button id="weekly" onclick="initialiseFunctionAsWeekly()">Weekly</button>
+                <button id= "monthly" onclick="initialiseFunctionAsMonthly()">Monthly</button>
             </div>
         </div>
         <div class="footer-box">
