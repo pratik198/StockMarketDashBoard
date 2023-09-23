@@ -3,26 +3,31 @@ let Url = null;
 
 function initialiseFunctionAsIntraDay() {
   Url = BaseUrl.replace("{0}","TIME_SERIES_INTRADAY");
+  console.log(Url);
 }
 
 function initialiseFunctionAsDaily() {
   Url = BaseUrl.replace("{0}","TIME_SERIES_DAILY");
+  console.log(Url);
 }
 
 function initialiseFunctionAsWeekly() {
   Url = BaseUrl.replace("{0}","TIME_SERIES_WEEKLY");
+  console.log(Url);
 }
 
 function initialiseFunctionAsMonthly() {
   Url = BaseUrl.replace("{0}","TIME_SERIES_DAILY");
+  console.log(Url);
 }
 
 function initialiseSymbol() {
-  const sym = document.querySelector(".symbol");
+  const sym = document.getElementById("symbol").value;
   Url = BaseUrl.replace("{1}",sym);
+  console.log(Url);
 }
 
-console.log(Url);
+/*
 function initialise() {
 const sym = document.querySelector(".symbol");
 const intraday = document.querySelector(".intraday");
@@ -53,7 +58,7 @@ if(intraday != null && intraday != undefined) {
 console.log(Url);
 callApi();
 }
-
+*/
 let stockData = null;
 function callApi() {
   fetch(Url)
