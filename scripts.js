@@ -1,64 +1,42 @@
-let BaseUrl = "https://www.alphavantage.co/query?function={0}&symbol={1}&interval=60min&apikey=AO48IFCXLA3BX1O9";
-let Url = null;
+let Url = "https://www.alphavantage.co/query?function={0}&symbol={1}&interval=60min&apikey=AO48IFCXLA3BX1O9";
 
 function initialiseFunctionAsIntraDay() {
-  Url = BaseUrl.replace("{0}","TIME_SERIES_INTRADAY");
+  Url = Url.replace("{0}","TIME_SERIES_INTRADAY");
   console.log(Url);
+  getStockData();
 }
 
 function initialiseFunctionAsDaily() {
-  Url = BaseUrl.replace("{0}","TIME_SERIES_DAILY");
+  Url = Url.replace("{0}","TIME_SERIES_DAILY");
   console.log(Url);
+  getStockData();
 }
 
 function initialiseFunctionAsWeekly() {
-  Url = BaseUrl.replace("{0}","TIME_SERIES_WEEKLY");
+  Url = Url.replace("{0}","TIME_SERIES_WEEKLY");
   console.log(Url);
+  getStockData();
 }
 
 function initialiseFunctionAsMonthly() {
-  Url = BaseUrl.replace("{0}","TIME_SERIES_DAILY");
+  Url = Url.replace("{0}","TIME_SERIES_DAILY");
   console.log(Url);
+  getStockData();
 }
 
 function initialiseSymbol() {
-  const sym = document.getElementById("symbol").value;
-  Url = BaseUrl.replace("{1}",sym);
+  const symbol = document.getElementById("symbol").value;
+  Url = Url.replace("{1}",symbol);
   console.log(Url);
 }
 
-/*
-function initialise() {
-const sym = document.querySelector(".symbol");
-const intraday = document.querySelector(".intraday");
-const weekly = document.querySelector(".weekly");
-const daily = document.querySelector(".daily");
-const monthly = document.querySelector(".monthly");
+function getStockData() {
+  if(!Url.includes("{1}")) {
+    callApi();
+  }
+}
 
-console.log(intraday);
-console.log(weekly);
-console.log(daily);
-console.log(monthly)
-if(intraday != null && intraday != undefined) {
-  console.log(intraday);
-  Url = BaseUrl.replace("{0}","TIME_SERIES_INTRADAY").replace("{1}",sym);
-} else if(weekly != null && weekly != undefined) {
-    console.log(weekly);
-    Url = BaseUrl.replace("{0}","TIME_SERIES_WEEKLY").replace("{1}",sym);
-} else if(daily != null && daily != undefined) {
-    console.log(daily);
-    Url = BaseUrl.replace("{0}","TIME_SERIES_DAILY").replace("{1}",sym);
-} else if(monthly != null && monthly != undefined) {
-    console.log(monthly)
-    Url = BaseUrl.replace("{0}","TIME_SERIES_MONTHLY").replace("{1}",sym);
-} else {
-  console.log("nothing")
-  Url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=60min&apikey=AO48IFCXLA3BX1O9";
-}
-console.log(Url);
-callApi();
-}
-*/
+
 let stockData = null;
 function callApi() {
   fetch(Url)
@@ -103,50 +81,6 @@ function processStockData() {
   })
 }
 
-
-
-/*
-function callApi() {
-fetch(Url)
-  .then(function(data) {
-    stockData = data.json();
-    console.log("anur");
-    console.log(stockData);
-    console.log("khaa");
-    processStockData();
-    //stockData = data["Meta Data"];
-    //console.log("2 "+stockData);
-  })
-  .catch(function (error) {
-    console.error("There was a problem with the fetch operation:", error);
-  });
-}
-
-callApi().then(function(result){
-    stockData = result["Meta Data"];
-    console.log("2 "+stockData);
-  })
-
-  console.log("3 "+stockData);
-
-  async function processStockData() {
-  const stock60mindata = await stockData["Time Series (60min)"];
-  if(stock60mindata == null || stock60mindata == undefined) {
-    console.log("PROBLEM");
-  }
-  const entries = Object.entries(stock60mindata);
-  entries.forEach(Element => {
-    console.log(Element);
-  })
-  //stock60mindata.array.forEach(element => {
-  //  console.log(element);
-  //});
-  }
-
-  //processStockData().then(function(result){
-  //  console.log("anurag");
-  //})
-  */
 
   
 
