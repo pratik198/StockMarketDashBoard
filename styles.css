@@ -298,3 +298,7 @@ input::placeholder{
     font-weight: bold;
     /* color: red; */
 }
+
+.modal-content{
+    background-color:  rgb(160 158 158);
+}
