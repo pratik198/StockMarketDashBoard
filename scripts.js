@@ -78,6 +78,13 @@ function processStockData() {
     markethigh = timevalueobj["2. high"];
     marketvolume = timevalueobj["5. volume"];
     console.log(marketvolume);
+    document.querySelector('.time').innerHTML = timekey;
+    document.querySelector('.open').innerHTML = marketopen;
+    document.querySelector('.low').innerHTML = marketlow;
+    document.querySelector('.high').innerHTML = markethigh;
+    document.querySelector('.close').innerHTML = marketclose;
+    document.querySelector('.volume').innerHTML = marketvolume;
+
   })
 }
 
