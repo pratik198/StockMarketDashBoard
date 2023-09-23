@@ -68,6 +68,8 @@ const marketlowvalues=[];
 const markethighvalues=[];
 const marketvolumevalues=[];
 
+//https://stackoverflow.com/questions/5536596/dynamically-creating-html-elements-using-javascript
+//https://www.w3schools.com/jsref/met_table_insertrow.asp#:~:text=The%20insertRow()%20method%20creates,method%20to%20remove%20a%20row.
 
 async function processStockDataAtOnce() {
   const timedstockData = await stockData["Time Series (60min)"];
