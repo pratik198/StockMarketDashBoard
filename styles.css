@@ -301,4 +301,11 @@ input::placeholder{
 
 .modal-content{
     background-color:  rgb(160 158 158);
+    height: 265px;
+    width: 76%;
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+    border-radius: 25px;
+
 }
