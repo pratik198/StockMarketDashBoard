@@ -1,5 +1,5 @@
 let Url = "https://www.alphavantage.co/query?function={0}&symbol={1}&interval=60min&apikey=AO48IFCXLA3BX1O9";
-
+let BaseUrl = Url;
 function initialiseFunctionAsIntraDay() {
   Url = Url.replace("{0}","TIME_SERIES_INTRADAY");
   console.log(Url);
@@ -26,6 +26,7 @@ function initialiseFunctionAsMonthly() {
 
 function initialiseSymbol() {
   const symbol = document.getElementById("symbol").value;
+  document.querySelector("input").value = " ";
   Url = Url.replace("{1}",symbol);
   console.log(Url);
 }
@@ -48,6 +49,7 @@ function callApi() {
   .then(data => {
     stockData = data; 
     console.log(stockData);
+    Url = BaseUrl;
     processStockDataAtOnce();
   })
   .catch(error => {
