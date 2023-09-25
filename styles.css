@@ -310,3 +310,16 @@ input::placeholder{
     margin-left: 227px;
     margin-top: 16px;
 }
+
+#stocktable{
+position: absolute;
+/* border: 2px solid black; */
+margin-top: 10px;
+
+}
+table, th, td {
+
+    position: relative;
+    /* border:1px solid black; */
+    width:70%;
+  }
