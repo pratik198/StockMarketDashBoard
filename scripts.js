@@ -1,26 +1,34 @@
 let Url = "https://www.alphavantage.co/query?function={0}&symbol={1}&interval=60min&apikey=AO48IFCXLA3BX1O9";
 let BaseUrl = Url;
+let Intraday=false;
+let Daily=false;
+let Weekly=false;
+let Monthly=false;
 function initialiseFunctionAsIntraDay() {
   Url = Url.replace("{0}","TIME_SERIES_INTRADAY");
   console.log(Url);
+  Intraday=true;
   getStockData();
 }
 
 function initialiseFunctionAsDaily() {
   Url = Url.replace("{0}","TIME_SERIES_DAILY");
   console.log(Url);
+  Daily=true;
   getStockData();
 }
 
 function initialiseFunctionAsWeekly() {
   Url = Url.replace("{0}","TIME_SERIES_WEEKLY");
   console.log(Url);
+  Weekly=true;
   getStockData();
 }
 
 function initialiseFunctionAsMonthly() {
   Url = Url.replace("{0}","TIME_SERIES_DAILY");
   console.log(Url);
+  Monthly=true;
   getStockData();
 }
 
@@ -37,8 +45,15 @@ function getStockData() {
   }
 }
 
+function resetFlags() {
+  Intraday=false;
+  Weekly=false;
+  Daily=false;
+  Monthly=false;
+}
+
 let stockData = null;
-function callApi() {
+async function callApi() {
   fetch(Url)
   .then(response => {
     if (!response.ok) {
@@ -74,7 +89,20 @@ const marketvolumevalues=[];
 //https://www.w3schools.com/jsref/met_table_insertrow.asp#:~:text=The%20insertRow()%20method%20creates,method%20to%20remove%20a%20row.
 
 async function processStockDataAtOnce() {
-  const timedstockData = await stockData["Time Series (60min)"];
+  let timedstockData;
+  if(Intraday === true) {
+    timedstockData = await stockData["Time Series (60min)"];
+  } else if(Weekly === true) {
+    timedstockData = await stockData["Weekly Time Series"];
+  } else if(Monthly === true) {
+    timedstockData = await stockData["Monthly Time Series"];
+  } else if(Daily === true) {
+    timedstockData = await stockData["Time Series (Daily)"];
+  } else {
+     console.log("Invalid Input");
+     return;
+  }
+  resetFlags();
   console.log(timedstockData);
   const entries = Object.entries(timedstockData);
   entries.forEach(Element => {
